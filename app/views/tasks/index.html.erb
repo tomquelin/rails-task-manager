@@ -1,0 +1,24 @@
+<h1>My tasks</h1>
+<ul>
+  <% @tasks.each_with_index do |task| %>
+    <% if task.completed == false %>
+      <li>[ ] <%= link_to task.title, task_path(task.id) %>
+        <%= link_to "Delete", tasks_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+      </li>
+    <% else %>
+     <li>[ X ] <%= link_to task.title, task_path(task.id) %>
+       <%= link_to "Delete", tasks_path(task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+     </li>
+    <% end %>
+  <% end %>
+</ul>
+
+<%= link_to "Add a new task", tasks_new_path %>
+
+
+
+
